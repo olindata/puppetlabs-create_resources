@@ -11,11 +11,11 @@ create_resources('create_resources::user', $users3)
 
 # TODO - types are not applied in main stage
 $users = {
-  'sally-mae' => 
+  'sally-mae' =>
   {'ensure' => 'present',
    'require' => 'User[bobby-joe]'
   }
-} 
+}
 create_resources('user', $users)
 
 user { 'foobar':
@@ -26,7 +26,7 @@ user { 'foobar':
 $classes = {
   'create_resources' => {
     'ensure' => 'present'
-  } 
+  }
 }
 
 create_resources('class', $classes)
@@ -41,7 +41,7 @@ class create_resources(
 
 define create_resources::user(
  $ensure,
- $user_name=$operatingsystem
+ $user_name=$::operatingsystem
 ){
   user{$name: ensure => $ensure}
   notify{$user_name:}
